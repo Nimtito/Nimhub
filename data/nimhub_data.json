@@ -3,5 +3,10 @@
         "name": "CURRENCY-CONVERTER",
         "description": "TO CONVERT CURRENCY",
         "status": "In Progress"
+    },
+    {
+        "name": "Nimhub",
+        "description": "Dashboard developers project",
+        "status": "Completed"
     }
 ]
