@@ -1,55 +1,87 @@
-from projects import projects_menu
-from tools import tools_menu
-from stats import stats_menu
-from storage import initialize_data_file
+import customtkinter as ctk
+
+# Import Pages
+from pages.Dashboard import DashboardPage
+from pages.Nimtask import NimtaskPage
+from pages.Nimfolio import NimfolioPage
+from pages.stats import statsPage
 
 
-def clear_screen():
-    print("\n" * 3)
+ctk.set_appearance_mode("Dark")
+ctk.set_default_color_theme("blue")
 
 
-def show_welcome():
-    clear_screen()
-    print("=" * 45)
-    print(" " * 16 + "NIMHUB")
-    print(" " * 7 + "Developer Control Center")
-    print("=" * 45)
-    print("Welcome back, Developer 🚀")
-    input("\nPress ENTER to continue...")
+class NimHubApp(ctk.CTk):
 
+    def __init__(self):
+        super().__init__()
 
-def main_menu():
-    while True:
-        clear_screen()
-        print("=" * 45)
-        print(" " * 13 + "MAIN DASHBOARD")
-        print("=" * 45)
-        print("1. Projects Manager")
-        print("2. Tools")
-        print("3. Developer Stats")
-        print("4. Exit")
-        print("=" * 45)
+        self.title("NimHub - Developer Control Center")
+        self.geometry("1200x700")
 
-        choice = input("Choose an option: ").strip()
+        # ---------------- Sidebar ----------------
+        self.sidebar = ctk.CTkFrame(self, width=220)
+        self.sidebar.pack(side="left", fill="y")
 
-        if choice == "1":
-            projects_menu()
-        elif choice == "2":
-            tools_menu()
-        elif choice == "3":
-            stats_menu()
-        elif choice == "4":
-            clear_screen()
-            print("Saving data...")
-            print("Exiting NimHub...")
-            print("Goodbye Developer!")
-            break
-        else:
-            print("\nInvalid option. Please choose 1-4.")
-            input("Press ENTER to continue...")
+        title = ctk.CTkLabel(
+            self.sidebar,
+            text="NIMHUB",
+            font=("Arial", 24, "bold")
+        )
+        title.pack(pady=30)
+
+        ctk.CTkButton(
+            self.sidebar,
+            text="🏠 Dashboard",
+            command=lambda: self.show_page("dashboard")
+        ).pack(fill="x", padx=20, pady=8)
+
+        ctk.CTkButton(
+            self.sidebar,
+            text="📋 NimTask",
+            command=lambda: self.show_page("nimtask")
+        ).pack(fill="x", padx=20, pady=8)
+
+        ctk.CTkButton(
+            self.sidebar,
+            text="💼 Nimfolio",
+            command=lambda: self.show_page("nimfolio")
+        ).pack(fill="x", padx=20, pady=8)
+
+        ctk.CTkButton(
+            self.sidebar,
+            text="📊 Stats",
+            command=lambda: self.show_page("stats")
+        ).pack(fill="x", padx=20, pady=8)
+
+        ctk.CTkButton(
+            self.sidebar,
+            text="Exit",
+            fg_color="red",
+            command=self.destroy
+        ).pack(side="bottom", fill="x", padx=20, pady=20)
+
+        # ---------------- Content Area ----------------
+        self.container = ctk.CTkFrame(self)
+        self.container.pack(side="right", fill="both", expand=True)
+
+        self.pages = {
+            "dashboard": DashboardPage(self.container),
+            "nimtask": NimtaskPage(self.container),
+            "nimfolio": NimfolioPage(self.container),
+            "stats": statsPage(self.container)
+        }
+
+        self.show_page("dashboard")
+
+    def show_page(self, page_name):
+
+        for page in self.pages.values():
+            page.pack_forget()
+
+        self.pages[page_name].pack(fill="both", expand=True)
 
 
 if __name__ == "__main__":
-    initialize_data_file()
-    show_welcome()
-    main_menu()
+    app = NimHubApp()
+    app.mainloop()
