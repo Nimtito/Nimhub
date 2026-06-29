@@ -1,88 +1,196 @@
 # NimHub
 
-## Description
-NimHub is a command-line developer control center built with Python. It helps a user manage, track, and launch Python projects from one place. Instead of having projects scattered across folders, NimHub provides a central dashboard for organizing project information, updating project status, viewing project statistics, and opening related tools .
-
-## Problem Statement
-As a beginner developer building multiple Python projects, it becomes easy for projects to be scattered across different files and folders. This makes it difficult to:
-- keep track of created projects
-- know which projects are complete and which are still in progress
-- manage project information in one place
-- access related tools quickly
-
-# Solution
-NimHub solves this problem by providing a single command-line dashboard where the user can:
-- add and manage projects
-- track project completion status
-- view all projects in one place
-- launch related tools such as NimTask and Nimfolio
-- view simple developer statistics
-
-## Features
-### 1. Main Dashboard
-A central menu for navigating to:
-- Projects Manager
-- Tools
-- Developer Stats
-- Exit
-
-### 2. Projects Manager
-Allows the user to:
-- add a project
-- view all projects
-- update project status
-- delete a project
-
-Each project contains:
-- project name
-- description
-- status
-
-### 3. Tools Section
-Displays available tools such as:
-- NimTask
-- Nimfolio
-
-### 4. Developer Stats
-Shows:
-- total number of projects
-- number of completed projects
-- number of in-progress projects
-
-### 5. Data Storage
-Stores project data in a JSON file so that it remains available after the program is closed.
+**NimHub** is a modern desktop application built with Python and CustomTkinter that helps developers manage their projects, tasks, portfolios, and productivity from one centralized dashboard.
 
 ---
 
-## Tech Stack
-- Python
-- JSON for data storage
-- VS Code
-- Git
-- Virtual environment (venv)
+#  Features
 
-### Python Concepts Used
-- Variables
-- Input and Output
-- Conditional Statements
-- Loops
-- Functions
-- Lists
-- Dictionaries
-- File Handling
-- JSON
-- Modules / Imports
-- Basic Exception Handling
-## Project Structure
-```text
-nimhub/
+-  Interactive Dashboard
+-  Project Management
+-  Task Management
+-  Portfolio (Nimfolio)
+-  Statistics & Analytics
+-  Settings
+-  Modern Dark UI
+-  SQLite Database
+-  Search Functionality
+-  Task Tracking
+
+---
+
+# Technologies Used
+
+- Python 3
+- CustomTkinter
+- SQLite3
+- Tkinter
+- Object-Oriented Programming (OOP)
+
+---
+
+#  Project Structure
+
+```
+NimHub/
+│
+├── assets/
+│
+├── database/
+│   ├── connection.py
+│   ├── projects.py
+│   ├── tasks.py
+│   ├── portfolio.py
+│   └── stats.py
+│
+├── pages/
+│   ├── Dashboard.py
+│   ├── Projects.py
+│   ├── NimTask.py
+│   ├── Nimfolio.py
+│   ├── Statistics.py
+│   └── Settings.py
 │
 ├── main.py
-├── projects.py
-├── tools.py
-├── stats.py
-├── storage.py
+├── requirements.txt
 ├── README.md
-├── .gitignore
-└── data/
-    └── nimhub_data.json
+└── LICENSE
+```
+
+---
+
+#  Installation Guide
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/yourusername/NimHub.git
+```
+
+### 2. Navigate into the project
+
+```bash
+cd NimHub
+```
+
+### 3. Create a virtual environment
+
+Windows
+
+```bash
+python -m venv venv
+```
+
+Activate
+
+```bash
+venv\Scripts\activate
+```
+
+Mac/Linux
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+---
+
+### 4. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+### 5. Run the application
+
+```bash
+python main.py
+```
+
+---
+
+#  Usage
+
+Launch the application and use the sidebar to navigate between:
+
+- Dashboard
+- Projects
+- NimTask
+- Nimfolio
+- Statistics
+- Settings
+
+---
+
+#  Database
+
+NimHub uses SQLite.
+
+The database is automatically created on first launch.
+
+Database tables include:
+
+- Projects
+- Tasks
+- Portfolio
+
+---
+
+#  Roadmap
+
+Future updates include:
+
+- User Authentication
+- Export Projects to PDF
+- Calendar Integration
+- Notifications
+- Cloud Backup
+- Themes
+- Charts & Graphs
+- Drag-and-Drop Tasks
+
+---
+
+# Contributing
+
+Contributions are welcome!
+
+1. Fork the repository.
+2. Create a feature branch.
+
+```bash
+git checkout -b feature-name
+```
+
+3. Commit your changes.
+
+```bash
+git commit -m "Add new feature"
+```
+
+4. Push to GitHub.
+
+```bash
+git push origin feature-name
+```
+
+5. Open a Pull Request.
+
+Please ensure your code follows the project's coding style and includes appropriate documentation where necessary.
+
+---
+
+#  License
+
+This project is licensed under the MIT License.
+
+---
+
+# Author
+
+**Nimrod Kyalo**
+
+Software Developer
